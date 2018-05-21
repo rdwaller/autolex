@@ -1,8 +1,10 @@
+// index.js
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import CommentBox from './CommentBox';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<CommentBox />, document.getElementById('root'));
+
 registerServiceWorker();
