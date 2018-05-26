@@ -2,12 +2,13 @@
   "name": "example-create-react-app-express",
   "version": "1.0.0",
   "scripts": {
-    "client": "cd client && yarn start",
+    "client": "cd client && npm run start",
     "server": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "mongoose": "^5.1.2"
   },
   "devDependencies": {
     "concurrently": "^3.5.0"
