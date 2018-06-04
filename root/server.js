@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
+const indexRouter = require('./routes/index.js');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -22,8 +23,13 @@ db.on('error', console.error.bind(console, 'MongoDB connection error'));
 
 // END MONGOOSE
 
-app.get('/api/hello', (req, res) => {
+/* DISABLED TO TRY ROUTER
+app.get('/', (req, res) => {
   res.send({ express: 'Hello From Express' });
 });
+*/
+
+app.use('/', indexRouter);
+
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
