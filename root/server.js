@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 const indexRouter = require('./routes/index.js');
+const Text = require ('./models/text.js');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -21,13 +22,13 @@ var db = mongoose.connection;
 //Bind connection to error event (to get notification of connection errors)
 db.on('error', console.error.bind(console, 'MongoDB connection error'));
 
-// END MONGOOSE
+var genericText = new Text({ content: 'Who looks outside, dreams; who looks inside, awakes.'});
 
-/* DISABLED TO TRY ROUTER
-app.get('/', (req, res) => {
-  res.send({ express: 'Hello From Express' });
+genericText.save(function (err, genericText) {
+  if (err) return console.error(err);
 });
-*/
+
+// END MONGOOSE
 
 app.use('/', indexRouter);
 

@@ -5,7 +5,8 @@ var router = express.Router();
 
 // Home page route.
 router.get('/', function (req, res) {
-  res.redirect('http://www.philosophersmag.com')
+  console.log('index router activated')
+  //res.redirect('http://www.philosophersmag.com')
 });
 
 

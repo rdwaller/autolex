@@ -1,12 +1,18 @@
 var mongoose = require('mongoose');
 
-var Schema = mongoose.Schema;
+var textSchema = mongoose.Schema ({
+  content: String
+});
 
-var TextSchema = new Schema(
-  {
-    text_string: {type: String, required: true},
-  }
-);
+var Text = mongoose.model('Text', textSchema);
+
+/*
+var genericText = new Text({ content: 'Who looks outside, dreams; who looks inside, awakes.'});
+
+genericText.save(function (err, genericText) {
+  if (err) return console.error(err);
+});
+*/
 
 //Export model
-module.exports = mongoose.model('Text', TextSchema);
+module.exports = mongoose.model('Text', textSchema);
