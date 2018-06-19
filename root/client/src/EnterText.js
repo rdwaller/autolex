@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+const axios = require('axios');
 
 class EnterText extends Component {
   constructor(props) {
@@ -14,10 +14,28 @@ class EnterText extends Component {
     this.setState({value: event.target.value});
   }
 
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
+  handleSubmit = event => {
     event.preventDefault();
+    const TextInput = {
+      TextInput: this.state.value
+    };
+    axios.post(`/api/texts`, { TextInput })
+    .then(res => {
+      alert('A text was submitted.');
+      console.log(res);
+      console.log(res.data);
+    })
   }
+
+  /* handleSubmit(event) {
+    axios.post('/', {
+     Text: this.state.value
+    })
+    .then(response => {
+      alert('A text was submitted.');
+    })
+    event.preventDefault();
+  } */
 
   render() {
     return (

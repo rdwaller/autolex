@@ -2,6 +2,7 @@
 //const app = express();
 const express = require('express');
 const router = express.Router();
+const Signature = require('../models/signature.js')
 
 // === ROOT DIRECTORY  ===//
 
@@ -24,15 +25,20 @@ router.get('/api/signatures', function(req, res) {
 
 // === POST NEW SIGNATURE == //
 
-router.post('/api/signatures', function(req, res) {
-  Signature.create({
+
+router.post('/', function(req, res) {
+  console.log('POST request received');
+});
+
+
+  /* Signature.create({
     guestSignature: req.body.SignatureOfGuest,
     message: req.body.MessageofGuest,
   }).then(signature => {
     res.json(signature)
     console.log('POST request received');
   });
-});
+}); */
 
 // === //
 
