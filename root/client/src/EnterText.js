@@ -17,14 +17,17 @@ class EnterText extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const TextInput = {
-      TextInput: this.state.value
+      textSubmission: this.state.value
     };
-    axios.post(`/api/texts`, { TextInput })
+    axios.post('http://localhost:5000', { TextInput })
     .then(res => {
-      alert('A text was submitted.');
-      console.log(res);
+      console.log('A text was submitted.');
       console.log(res.data);
-    })
+    });
+    /*axios.get('http://localhost:5000')
+    .then(res => {
+      console.log('GET request conducted.');
+    }); */
   }
 
   /* handleSubmit(event) {

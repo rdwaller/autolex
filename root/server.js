@@ -4,7 +4,8 @@ const parseurl = require('parseurl');
 const bodyParser = require('body-parser');
 const path = require('path');
 //const expressValidator = require('express-validator');
-const Signature = require('./models/signature.js')
+//const Signature = require('./models/signature.js')
+const Text = require('./models/textModel.js');
 //const url = 'mongodb://localhost:27017/signatures';
 
 const express = require('express');
@@ -18,6 +19,12 @@ const routes = require('./routes/routes.js');
 const app = express();
 const port = process.env.PORT || 5000;
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 //START MONGOOSE
 
 //Set up default mongoose connection
@@ -26,7 +33,7 @@ const dbUri = process.env.DB_URI;
 
 mongoose.connect(dbUri, function (err, db) {
   if (err) {
-    console.log('Unable to connec to the mongoDB server. Error:', err);
+    console.log('Unable to connect to the mongoDB server. Error:', err);
   } else {
     console.log('Connection established to', dbUri);
   }
