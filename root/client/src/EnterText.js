@@ -16,10 +16,10 @@ class EnterText extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const TextInput = {
+    const textSubmission = {
       textSubmission: this.state.value
     };
-    axios.post('http://localhost:5000', { TextInput })
+    axios.post('http://localhost:5000/textSubmissions', { textSubmission })
     .then(res => {
       console.log('A text was submitted.');
       console.log(res.data);
@@ -29,16 +29,6 @@ class EnterText extends Component {
       console.log('GET request conducted.');
     }); */
   }
-
-  /* handleSubmit(event) {
-    axios.post('/', {
-     Text: this.state.value
-    })
-    .then(response => {
-      alert('A text was submitted.');
-    })
-    event.preventDefault();
-  } */
 
   render() {
     return (

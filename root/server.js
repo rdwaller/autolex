@@ -1,11 +1,10 @@
 //====LIST DEPENDENCIES===//
 
-const parseurl = require('parseurl');
-const bodyParser = require('body-parser');
+//const parseurl = require('parseurl');
 const path = require('path');
 //const expressValidator = require('express-validator');
 //const Signature = require('./models/signature.js')
-const Text = require('./models/textModel.js');
+const TextInput = require('./models/textModel.js');
 //const url = 'mongodb://localhost:27017/signatures';
 
 const express = require('express');
@@ -18,12 +17,17 @@ const routes = require('./routes/routes.js');
 
 const app = express();
 const port = process.env.PORT || 5000;
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+
+app.use(bodyParser.json()); app.use(bodyParser.urlencoded({ extended: true }));
 
 //START MONGOOSE
 

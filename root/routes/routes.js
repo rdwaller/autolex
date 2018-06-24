@@ -1,27 +1,24 @@
-
-//const app = express();
 const express = require('express');
 const router = express.Router();
-const Signature = require('../models/signature.js')
+//const mongoose = require('mongoose');
+const TextInput = require('../models/textModel.js');
+
+const app = express();
+const port = process.env.PORT || 5000;
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 router.get('/', function(req, res) {
     console.log('GET request received');
 });
 
-router.post('/', function(req, res) {
-  console.log('POST request received');
+router.post('/textSubmissions', function(req, res) {
+
+  TextInput.create({
+    submittedText: req.body.textSubmission
+  }).then(console.log('POST request received'));
+  
 });
-
-
-  /* Signature.create({
-    guestSignature: req.body.SignatureOfGuest,
-    message: req.body.MessageofGuest,
-  }).then(signature => {
-    res.json(signature)
-    console.log('POST request received');
-  });
-}); */
-
-// === //
 
 module.exports = router;

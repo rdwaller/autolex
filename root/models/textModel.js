@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 //create Text schema
 const textSchema = new Schema({
-  text: String
+  submittedText: Object
 });
 
 const TextInput = mongoose.model('TextInput', textSchema);
