@@ -19,15 +19,18 @@ class EnterText extends Component {
     const textSubmission = {
       textSubmission: this.state.value
     };
+
     axios.post('http://localhost:5000/textSubmissions', { textSubmission })
     .then(res => {
       console.log('A text was submitted.');
       console.log(res.data);
     });
-    /*axios.get('http://localhost:5000')
+
+    //TODO: Get data from database.
+    axios.get('http://localhost:5000/textSubmissions')
     .then(res => {
       console.log('GET request conducted.');
-    }); */
+    });
   }
 
   render() {

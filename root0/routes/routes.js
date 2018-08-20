@@ -9,9 +9,6 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-router.get('/', function(req, res) {
-    console.log('GET request received');
-});
 
 router.post('/textSubmissions', function(req, res) {
 
@@ -19,6 +16,10 @@ router.post('/textSubmissions', function(req, res) {
     submittedText: req.body.textSubmission
   }).then(console.log('POST request received'));
   
+});
+
+router.get('/textSubmissions', function(req, res) {
+  console.log('GET request received');
 });
 
 module.exports = router;
