@@ -18,13 +18,14 @@ class EnterText extends Component {
     this.setState({value: event.target.value});
   }
 
-  handleSubmit = event => {
-    alert(`Submission received: ${this.state.value}`);
+  handleSubmit(event) {
     event.preventDefault();
-    this.setState({ submitted: true });
+    this.setState({submitted: true});
+    alert(`Submission received: ${this.state.value}`);
   }
 
   renderLexicon() {
+    this.setState({submitted: false});
     return <GenerateLexicon textEntry={this.state.value} />
   }
 

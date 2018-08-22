@@ -8,9 +8,7 @@ class GenerateLexicon extends Component {
     const splitText = strippedText.split(' ');
     console.log(splitText);
     return (
-      <p>
-        {}
-      </p>
+      <p>{strippedText}</p>
     );
   }
 }
