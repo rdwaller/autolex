@@ -13,6 +13,11 @@ class EnterText extends Component {
     
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.endProcessSubmission = this.endProcessSubmission;
+  }
+
+  endProcessSubmission = () => {
+    this.setState({ processSubmission: false});
   }
 
   handleChange(event) {
@@ -36,7 +41,7 @@ class EnterText extends Component {
           <textarea value={this.state.typedValue} onChange={this.handleChange} />
           <input type="submit" value="Submit" />
         </form>
-        {this.state.processSubmission && <GenerateLexicon textEntry={this.state.submittedValue} />}
+        {this.state.processSubmission && <GenerateLexicon textEntry={this.state.submittedValue} endProcessSubmission={this.endProcessSubmission} />}
       </div>
     );
   }
