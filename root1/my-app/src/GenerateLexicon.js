@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 
-//this.props.endProcessSubmission()
-
 class GenerateLexicon extends Component {
 
-  componentDidMount() {
+  componentDidUpdate() {
     this.props.endProcessSubmission();
   }
 
