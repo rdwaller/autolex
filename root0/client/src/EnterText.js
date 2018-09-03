@@ -1,26 +1,35 @@
 import React, { Component } from 'react';
+import GenerateLexicon from './GenerateLexicon';
 const axios = require('axios');
 
 class EnterText extends Component {
   constructor(props) {
     super(props);
-    this.state = {value: ''};
+    this.state = {
+      typedValue: '',
+      submittedValue: '',
+      processSubmission: false
+    }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
+  endProcessSubmission = () => {
+    this.setState({ processSubmission: false});
   }
 
-  handleSubmit = event => {
-    event.preventDefault();
-    const textSubmission = {
-      textSubmission: this.state.value
-    };
+  handleChange(event) {
+    this.setState({typedValue: event.target.value});
+  }
 
-    axios.post('http://localhost:5000/textSubmissions', { textSubmission })
+  handleSubmit(event) {
+    event.preventDefault();
+    this.setState({submittedValue: this.state.typedValue});
+    this.setState({processSubmission: true});
+    //alert(`Submission received: ${this.state.submittedValue}`); --NOTE: Pops up before updating
+  
+    /* axios.post('http://localhost:5000/textSubmissions', { textSubmission })
     .then(res => {
       console.log('A text was submitted.');
       console.log(res.data);
@@ -30,7 +39,7 @@ class EnterText extends Component {
     axios.get('http://localhost:5000/textSubmissions')
     .then(res => {
       console.log('GET request conducted.');
-    });
+    }); */
   }
 
   render() {
@@ -39,10 +48,11 @@ class EnterText extends Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             Name:
-            <input type="text" value={this.state.value} onChange={this.handleChange} />
           </label>
+          <textarea value={this.state.typedValue} onChange={this.handleChange} />
           <input type="submit" value="Submit" />
         </form>
+        {this.state.processSubmission && <GenerateLexicon textEntry={this.state.submittedValue} endProcessSubmission={this.endProcessSubmission} />}
       </div>
     );
   }
