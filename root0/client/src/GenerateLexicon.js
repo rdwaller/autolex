@@ -7,14 +7,16 @@ import React, { Component } from 'react';
 
 class GenerateLexicon extends Component {
 
-  componentDidMount() {
+  // TEST API SUBMISSION WITH PEARSON API //
+  /* componentDidMount() {
     fetch("http://api.pearson.com/v2/dictionaries/lasde/entries?headword=caduceus")
     //.then(res => res.json())
     .then(
       (result) => {
         console.log(result)
       });
-  }
+  } */
+  // END TEST API SUBMISSION //
 
   componentDidUpdate() {
     this.props.endProcessSubmission();
@@ -25,6 +27,9 @@ class GenerateLexicon extends Component {
     const strippedText = textEntry.replace(/[^\w\s]/gi,'').replace(/\r?\n|\r/gi,' ');
     const splitText = strippedText.split(' ');
     console.log(splitText);
+    /* DICT TEST */
+
+    /**/
     return (
       <div>
         <p>{strippedText}</p>

@@ -29,9 +29,9 @@ app.use(function(req, res, next) {
 
 app.use(bodyParser.json()); app.use(bodyParser.urlencoded({ extended: true }));
 
-//START MONGOOSE
+/* START MONGOOSE */
 
-//Set up default mongoose connection
+  //Set up default mongoose connection
 
 const dbUri = process.env.DB_URI;
 
@@ -42,15 +42,15 @@ mongoose.connect(dbUri, function (err, db) {
     console.log('Connection established to', dbUri);
   }
 });
-//Get Mongoose to use the global promise library
+  //Get Mongoose to use the global promise library
 mongoose.Promise = global.Promise;
-//Get the default connection
+  //Get the default connection
 var db = mongoose.connection;
 
-//Bind connection to error event (to get notification of connection errors)
+  //Bind connection to error event (to get notification of connection errors)
 db.on('error', console.error.bind(console, 'MongoDB connection error'));
 
-// END MONGOOSE
+/* END MONGOOSE */
 
 app.use('/', routes); 
 

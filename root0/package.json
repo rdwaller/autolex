@@ -10,8 +10,9 @@
     "async": "^2.6.1",
     "axios": "^0.18.0",
     "dotenv": "^5.0.1",
-    "express": "^4.16.2",
-    "mongoose": "^5.1.2"
+    "express": "^4.16.3",
+    "mongoose": "^5.1.2",
+    "oxford-dictionary": "^1.4.1"
   },
   "devDependencies": {
     "concurrently": "^3.5.0"

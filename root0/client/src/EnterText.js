@@ -27,19 +27,27 @@ class EnterText extends Component {
     event.preventDefault();
     this.setState({submittedValue: this.state.typedValue});
     this.setState({processSubmission: true});
+    const textSubmission = {
+      textSubmission: this.state.value
+    };
     //alert(`Submission received: ${this.state.submittedValue}`); --NOTE: Pops up before updating
   
     /* axios.post('http://localhost:5000/textSubmissions', { textSubmission })
     .then(res => {
       console.log('A text was submitted.');
       console.log(res.data);
-    });
+    }); */
 
-    //TODO: Get data from database.
+    /* //TODO: Get data from database.
     axios.get('http://localhost:5000/textSubmissions')
     .then(res => {
-      console.log('GET request conducted.');
+      console.log('GET request sent.');
     }); */
+
+    axios.get('http://localhost:5000/dictionary_test')
+    .then(res => {
+      console.log('GET request sent.');
+    })
   }
 
   render() {
