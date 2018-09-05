@@ -54,5 +54,4 @@ db.on('error', console.error.bind(console, 'MongoDB connection error'));
 
 app.use('/', routes); 
 
-
 app.listen(port, () => console.log(`Listening on port ${port}`));

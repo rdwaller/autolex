@@ -1,13 +1,18 @@
 const express = require('express');
+const app = express();
 const router = express.Router();
 //const mongoose = require('mongoose');
-const TextInput = require('../models/textModel.js');
+//const TextInput = require('../models/textModel.js');
 
-const app = express();
 const port = process.env.PORT || 5000;
 const bodyParser = require('body-parser');
+
+// SET bodyParser MIDDLEWARE //
 app.use(bodyParser.json());
+
 app.use(bodyParser.urlencoded({ extended: true }));
+
+//END SET bodyParser MIDDLEWARE //
 
 // CONFIGURE OXFORD DICTIONARY AUTHENTICATION //
   const Dictionary = require("oxford-dictionary");
@@ -34,22 +39,20 @@ router.get('/textSubmissions', function(req, res) {
   console.log('GET request received');
 });
 
-router.get('/dictionary_test', function(req, res) {
-  console.log('GET request received');
-
-
-  // OXFORD DICTIONARY USE TEST  //
-
-  const lookup = dict.find("awesome");
-
-  lookup.then(function(res) {
-      console.log(res);
-  },
-  function(err) {
-      console.log(err);
+router.get('/dictionary_test', (req, res, next) => {
+  const lookup = dict.find("apple");
+  lookup.then(result => {
+    console.log(result);
+    res.json(result);
+  }, err => {
+    console.log(err);
+    res.sendStatus(500);
   });
-
-  // END OXFORD DICTIONARY USE TEST //  
 });
 
 module.exports = router;
+
+/* CODE THAT FINDS A DEFINITION 
+wordDef =  res['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]['definitions'];
+}
+*/

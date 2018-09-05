@@ -46,8 +46,8 @@ class EnterText extends Component {
 
     axios.get('http://localhost:5000/dictionary_test')
     .then(res => {
-      console.log('GET request sent.');
-    })
+      console.log(res);
+    });
   }
 
   render() {
