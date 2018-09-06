@@ -40,7 +40,6 @@ router.get('/textSubmissions', function(req, res) {
 });
 
 router.get('/dictionary_test/:wordId', (req, res, next) => {
-  res.send(req.params);
   const lookup = dict.find("apple");
   lookup.then(result => {
     console.log(result);

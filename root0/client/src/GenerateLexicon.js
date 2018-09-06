@@ -2,17 +2,16 @@ import React, { Component } from 'react';
 const axios = require('axios');
 
 
-/* Setup Dictionary */
-
-/**/
-
 class GenerateLexicon extends Component {
+  constructor(props) {
+    super(props);
 
-  componentDidUpdate() {
-    this.props.endProcessSubmission();
+    this.state = {
+      lexicon: {}
+    }
   }
 
-  render() {
+  componentDidMount() {
     const textEntry = this.props.textEntry
     const strippedText = textEntry.replace(/[^\w\s]/gi,'').replace(/\r?\n|\r/gi,' ');
     const splitText = strippedText.split(' ');
@@ -20,16 +19,20 @@ class GenerateLexicon extends Component {
     splitText.forEach(word => {
       console.log(word);
       axios.get(`http://localhost:5000/dictionary_test/${word}`)
-      .then(res => {
-        console.log(res);
-      });
+      .then(wordData => this.setState({lexicon: wordData['data']['results'][0]['lexicalEntries'][0]['entries'] [0]['senses'][0]['definitions'] }));
     });
-    /* DICT TEST */
+    
+  }
 
-    /**/
+  /* componentDidUpdate() {
+    this.props.endProcessSubmission();
+  } */
+
+  render() {
+
     return (
       <div>
-        <p>{strippedText}</p>
+        <p>This component has rendered.</p>
       </div>
     );
   }
