@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+const axios = require('axios');
 
 
 /* Setup Dictionary */
@@ -6,17 +7,6 @@ import React, { Component } from 'react';
 /**/
 
 class GenerateLexicon extends Component {
-
-  // TEST API SUBMISSION WITH PEARSON API //
-  /* componentDidMount() {
-    fetch("http://api.pearson.com/v2/dictionaries/lasde/entries?headword=caduceus")
-    //.then(res => res.json())
-    .then(
-      (result) => {
-        console.log(result)
-      });
-  } */
-  // END TEST API SUBMISSION //
 
   componentDidUpdate() {
     this.props.endProcessSubmission();
@@ -27,6 +17,13 @@ class GenerateLexicon extends Component {
     const strippedText = textEntry.replace(/[^\w\s]/gi,'').replace(/\r?\n|\r/gi,' ');
     const splitText = strippedText.split(' ');
     console.log(splitText);
+    splitText.forEach(word => {
+      console.log(word);
+      axios.get(`http://localhost:5000/dictionary_test/${word}`)
+      .then(res => {
+        console.log(res);
+      });
+    });
     /* DICT TEST */
 
     /**/

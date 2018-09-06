@@ -44,10 +44,10 @@ class EnterText extends Component {
       console.log('GET request sent.');
     }); */
 
-    axios.get('http://localhost:5000/dictionary_test')
+    /*axios.get('http://localhost:5000/dictionary_test')
     .then(res => {
       console.log(res);
-    });
+    }); */
   }
 
   render() {
