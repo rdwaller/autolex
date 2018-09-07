@@ -39,8 +39,10 @@ router.get('/textSubmissions', function(req, res) {
   console.log('GET request received');
 });
 
-router.get('/dictionary_test/:wordId', (req, res, next) => {
-  const lookup = dict.find("apple");
+
+router.get('/dictionary_test/:word', (req, res, next) => {
+  const word = req.params.word;
+  const lookup = dict.find(word);
   lookup.then(result => {
     console.log(result);
     res.json(result);
