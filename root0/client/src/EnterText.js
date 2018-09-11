@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import GenerateLexicon from './GenerateLexicon';
-const axios = require('axios');
 
 class EnterText extends Component {
   constructor(props) {
@@ -30,24 +29,6 @@ class EnterText extends Component {
     const textSubmission = {
       textSubmission: this.state.value
     };
-    //alert(`Submission received: ${this.state.submittedValue}`); --NOTE: Pops up before updating
-  
-    /* axios.post('http://localhost:5000/textSubmissions', { textSubmission })
-    .then(res => {
-      console.log('A text was submitted.');
-      console.log(res.data);
-    }); */
-
-    /* //TODO: Get data from database.
-    axios.get('http://localhost:5000/textSubmissions')
-    .then(res => {
-      console.log('GET request sent.');
-    }); */
-
-    /*axios.get('http://localhost:5000/dictionary_test')
-    .then(res => {
-      console.log(res);
-    }); */
   }
 
   render() {
