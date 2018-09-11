@@ -26,9 +26,6 @@ class EnterText extends Component {
     event.preventDefault();
     this.setState({submittedValue: this.state.typedValue});
     this.setState({processSubmission: true});
-    const textSubmission = {
-      textSubmission: this.state.value
-    };
   }
 
   render() {

@@ -18,8 +18,8 @@ class GenerateLexicon extends Component {
     console.log(splitText);
     splitText.forEach(word => {
       axios.get(`http://localhost:5000/dictionary_test/${word}`)
-      .then(wordData => lexicon[word] = wordData['data']['results'][0]['lexicalEntries'][0]['entries'] [0]['senses'][0]['definitions']);
-      this.setState({ lexicon: { lexicon } })
+      .then(wordData => lexicon[word] = wordData['data']['results'][0]['lexicalEntries'][0]['entries'] [0]['senses'][0]['definitions'])
+      .then(this.setState({ lexicon: { lexicon } }));
     });   
   }
 
@@ -31,7 +31,7 @@ class GenerateLexicon extends Component {
 
     return (
       <div>
-        <p>This component has rendered.</p>
+        <p>{JSON.stringify(this.state.lexicon)}</p>
       </div>
     );
   }
