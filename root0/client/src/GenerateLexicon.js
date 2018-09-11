@@ -15,10 +15,9 @@ class GenerateLexicon extends Component {
     const textEntry = this.props.textEntry;
     const strippedText = textEntry.replace(/[^\w\s]/gi,'').replace(/\r?\n|\r/gi,' ');
     const splitText = strippedText.split(' ');
-    console.log(splitText);
-    splitText.forEach(word => {
-      axios.get(`http://localhost:5000/dictionary_test/${word}`)
-      .then(wordData => lexicon[word] = wordData['data']['results'][0]['lexicalEntries'][0]['entries'] [0]['senses'][0]['definitions'])
+    splitText.forEach(async (word) => {
+      await axios.get(`http://localhost:5000/dictionary_test/${word}`)
+      .then(wordData => lexicon[word] = wordData['data']['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]['definitions'])
       .then(this.setState({ lexicon: { lexicon } }));
     });   
   }
