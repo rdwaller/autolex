@@ -6,33 +6,46 @@ class GenerateLexicon extends Component {
     super(props);
 
     this.state = {
-      lexicon: []
-    }
+      lexicon : {},
+      loading: true
+    };
   }
 
   componentDidMount() {
-    let lexicon = {};
+    let submittedLexicon = {};
     const textEntry = this.props.textEntry;
     const strippedText = textEntry.replace(/[^\w\s]/gi,'').replace(/\r?\n|\r/gi,' ');
     const splitText = strippedText.split(' ');
-    splitText.forEach(async (word) => {
-      await axios.get(`http://localhost:5000/dictionary_test/${word}`)
-      .then(wordData => lexicon[word] = wordData['data']['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]['definitions'])
-      .then(this.setState({ lexicon: { lexicon } }));
+    splitText.forEach(word => {
+      axios.get(`http://localhost:5000/dictionary_test/${word}`)
+      .then(wordData => {
+        submittedLexicon[word] = wordData['data']['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]['definitions'];
+        this.setState({ 
+          lexicon: { submittedLexicon },
+          loading: false
+        });
+      });
     });   
   }
 
-  /* componentDidUpdate() {
-    this.props.endProcessSubmission();
-  } */
+  
+  componentDidUpdate() {
+    //this.props.endProcessSubmission();
+  }
+
 
   render() {
-
-    return (
-      <div>
-        <p>{JSON.stringify(this.state.lexicon)}</p>
-      </div>
-    );
+    if (this.state.loading === false) {
+      return (
+        <div>
+          {JSON.stringify(this.state.lexicon)};
+        </div>
+      );
+    } else {
+      return (
+        <p>loading</p>
+      )
+    }
   }
 }
 

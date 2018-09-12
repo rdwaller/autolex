@@ -19,11 +19,15 @@ class EnterText extends Component {
   }
 
   handleChange(event) {
-    this.setState({typedValue: event.target.value});
+    this.setState({
+      typedValue: event.target.value,
+      processSubmission: false
+    });
   }
 
   handleSubmit(event) {
     event.preventDefault();
+    alert(this.state.processSubmission);
     this.setState({submittedValue: this.state.typedValue});
     this.setState({processSubmission: true});
   }
@@ -38,7 +42,7 @@ class EnterText extends Component {
           <textarea value={this.state.typedValue} onChange={this.handleChange} />
           <input type="submit" value="Submit" />
         </form>
-        {this.state.processSubmission && <GenerateLexicon textEntry={this.state.submittedValue} endProcessSubmission={this.endProcessSubmission} />}
+        {this.state.processSubmission && <GenerateLexicon textEntry={this.state.submittedValue} processSubmission={this.state.processSubmission} endProcessSubmission={this.endProcessSubmission} />}
       </div>
     );
   }
