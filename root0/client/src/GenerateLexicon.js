@@ -12,14 +12,34 @@ class GenerateLexicon extends Component {
   }
 
   componentDidMount() {
-    let submittedLexicon = {};
     const textEntry = this.props.textEntry;
     const strippedText = textEntry.replace(/[^\w\s]/gi,'').replace(/\r?\n|\r/gi,' ');
     const splitText = strippedText.split(' ');
+    const submittedLexicon = [];
     splitText.forEach(word => {
       axios.get(`http://localhost:5000/dictionary_test/${word}`)
       .then(wordData => {
-        submittedLexicon[word] = wordData['data']['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]['definitions'];
+        let obj = {};
+        let definition = wordData['data']['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]['definitions']
+        obj['word'] = word;
+        obj['definition'] = definition;
+        submittedLexicon.push(obj);
+        function compare(a,b) {
+          const wordA = a.word.toUpperCase();
+          const wordB = b.word.toUpperCase();
+          
+          let comparison = 0;
+          if (wordA > wordB) {
+            comparison = 1;
+          } else if (wordA < wordB) {
+            comparison = -1;
+          }
+          return comparison
+        }
+        submittedLexicon.sort(compare);
+
+        
+
         this.setState({ 
           lexicon: { submittedLexicon },
           loading: false
@@ -28,7 +48,6 @@ class GenerateLexicon extends Component {
     });   
   }
 
-  
   componentDidUpdate() {
     //this.props.endProcessSubmission();
   }
