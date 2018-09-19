@@ -15,13 +15,11 @@ class GenerateLexicon extends Component {
     const textEntry = this.props.textEntry;
     const strippedText = textEntry.replace(/[^\w\s]/gi,'').replace(/\r?\n|\r/gi,' ');
     const splitText = strippedText.split(' ');
-
     function discardDuplicates(value, index, self) {
       return self.indexOf(value) === index;
     }
     const filteredText = splitText.filter( discardDuplicates ); 
-    console.log(filteredText);
-    
+    console.log(filteredText);    
 
     const submittedLexicon = [];
     filteredText.forEach(word => {

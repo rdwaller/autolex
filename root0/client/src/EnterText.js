@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './EnterText.css';
 import GenerateLexicon from './GenerateLexicon';
 
 class EnterText extends Component {
@@ -34,11 +35,10 @@ class EnterText extends Component {
   render() {
     return (
       <div>
+        <p className="Instructions">Enter a text below.</p>
         <form onSubmit={this.handleSubmit}>
-          <label>
-            Name:
-          </label>
-          <textarea value={this.state.typedValue} onChange={this.handleChange} />
+          <label></label>
+          <textarea className="TextArea" value={this.state.typedValue} onChange={this.handleChange} />
           <input type="submit" value="Submit" />
         </form>
         {this.state.processSubmission && <GenerateLexicon textEntry={this.state.submittedValue} endProcessSubmission={this.endProcessSubmission} />}

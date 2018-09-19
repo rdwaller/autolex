@@ -1,28 +1,32 @@
-.App {
-  text-align: center;
+
+@font-face {
+  font-family: "Quicksand";
+  src: url(./fonts/Quicksand-Regular.otf)
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.App {
+  height: 100vh;
+  text-align: center;
+  background-color: rgb(100, 146, 214);
 }
 
 .App-header {
-  background-color: #222;
+  text-align: left;
   height: 150px;
-  padding: 20px;
+  padding: 45px;
   color: white;
 }
 
 .App-title {
+  margin: 0 0 0.1em 0;
+  font-family: "Quicksand", sans-serif;
+  font-size: 5em;
+}
+
+.App-description {
   font-size: 1.5em;
-}
+  font-family: "Quicksand", sans-serif;
+  margin: 0;
+  }
 
-.App-intro {
-  font-size: large;
-}
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
