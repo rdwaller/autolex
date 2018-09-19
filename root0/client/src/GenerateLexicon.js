@@ -15,8 +15,16 @@ class GenerateLexicon extends Component {
     const textEntry = this.props.textEntry;
     const strippedText = textEntry.replace(/[^\w\s]/gi,'').replace(/\r?\n|\r/gi,' ');
     const splitText = strippedText.split(' ');
+
+    function discardDuplicates(value, index, self) {
+      return self.indexOf(value) === index;
+    }
+    const filteredText = splitText.filter( discardDuplicates ); 
+    console.log(filteredText);
+    
+
     const submittedLexicon = [];
-    splitText.forEach(word => {
+    filteredText.forEach(word => {
       axios.get(`http://localhost:5000/dictionary_test/${word}`)
       .then(wordData => {
         let obj = {};
@@ -37,6 +45,7 @@ class GenerateLexicon extends Component {
           return comparison
         }
         const alphabetizedSubmittedLexicon = submittedLexicon.sort(compare);
+        
 
         this.setState({ 
           lexicon: { alphabetizedSubmittedLexicon },
