@@ -36,12 +36,10 @@ class GenerateLexicon extends Component {
           }
           return comparison
         }
-        submittedLexicon.sort(compare);
-
-        
+        const alphabetizedSubmittedLexicon = submittedLexicon.sort(compare);
 
         this.setState({ 
-          lexicon: { submittedLexicon },
+          lexicon: { alphabetizedSubmittedLexicon },
           loading: false
         });
       });
@@ -52,13 +50,15 @@ class GenerateLexicon extends Component {
     //this.props.endProcessSubmission();
   }
 
-
   render() {
     if (this.state.loading === false) {
+      const lex = this.state.lexicon.alphabetizedSubmittedLexicon;
+      const listLex = lex.map((d) => <li key={d.word}>{d.word}: {d.definition}</li>);
+
       return (
-        <div>
-          {JSON.stringify(this.state.lexicon)};
-        </div>
+        <ul>
+          {listLex}
+        </ul>
       );
     } else {
       return (
