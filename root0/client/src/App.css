@@ -7,26 +7,25 @@
 .App {
   height: 100vh;
   text-align: center;
-  background-color: rgb(100, 146, 214);
 }
 
 .App-header {
+  display: block;
+  margin: 1em;
   text-align: left;
-  height: 150px;
-  padding: 45px;
-  color: white;
+  height: 20vh;
+  padding: 5vh;
+  color: rgb(240, 240, 240);
 }
 
 .App-title {
-  margin: 0 0 0.1em 0;
   font-family: "Quicksand", sans-serif;
   font-size: 5em;
+  margin: 0;
 }
 
 .App-description {
-  font-size: 1.5em;
   font-family: "Quicksand", sans-serif;
-  margin: 0;
+  font-size: 1.7em;
+  margin: 0 0.2em;
   }
-
-

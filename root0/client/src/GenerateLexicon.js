@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './GenerateLexicon.css';
+import FlashCard from './FlashCard';
 const axios = require('axios');
 
 class GenerateLexicon extends Component {
@@ -19,11 +21,9 @@ class GenerateLexicon extends Component {
       return self.indexOf(value) === index;
     }
     const filteredText = splitText.filter( discardDuplicates ); 
-    console.log(filteredText);    
-
     const submittedLexicon = [];
     filteredText.forEach(word => {
-      axios.get(`http://localhost:5000/dictionary_test/${word}`)
+      axios.get(`http://localhost:5000/oxford_api/${word}`)
       .then(wordData => {
         let obj = {};
         let definition = wordData['data']['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]['definitions']
@@ -52,7 +52,7 @@ class GenerateLexicon extends Component {
       });
     });   
   }
-
+  
   componentDidUpdate() {
     //this.props.endProcessSubmission();
   }
@@ -60,16 +60,16 @@ class GenerateLexicon extends Component {
   render() {
     if (this.state.loading === false) {
       const lex = this.state.lexicon.alphabetizedSubmittedLexicon;
-      const listLex = lex.map((d) => <li key={d.word}>{d.word}: {d.definition}</li>);
+      const listLex = lex.map((d) => <li key={d.word} className='List-lex'>{d.word}: {d.definition}</li>);
 
       return (
         <ul>
-          {listLex}
+           {listLex}
         </ul>
       );
     } else {
       return (
-        <p>loading</p>
+        <p>Loading. If this message stays for more than a few seconds, there is a problem.</p>
       )
     }
   }

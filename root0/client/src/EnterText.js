@@ -35,11 +35,10 @@ class EnterText extends Component {
   render() {
     return (
       <div>
-        <p className="Instructions">Enter a text below.</p>
         <form onSubmit={this.handleSubmit}>
           <label></label>
-          <textarea className="TextArea" value={this.state.typedValue} onChange={this.handleChange} />
-          <input type="submit" value="Submit" />
+          <textarea className="Text-area" placeholder="Enter a text here." value={this.state.typedValue} onChange={this.handleChange} />
+          <input type="submit" className="Submit-button" value="Generate Lexicon" />
         </form>
         {this.state.processSubmission && <GenerateLexicon textEntry={this.state.submittedValue} endProcessSubmission={this.endProcessSubmission} />}
       </div>

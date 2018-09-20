@@ -40,7 +40,7 @@ router.get('/textSubmissions', function(req, res) {
 });
 
 
-router.get('/dictionary_test/:word', (req, res, next) => {
+router.get('/oxford_api/:word', (req, res, next) => {
   const word = req.params.word;
   const lookup = dict.find(word);
   lookup.then(result => {

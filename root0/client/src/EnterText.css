@@ -4,19 +4,32 @@
   src: url(./fonts/Quicksand-Regular.otf)
 }
 
-.Instructions {
+.Text-area {
   display: block;
-  width: 20em;
-  margin: 1em auto 1em auto;
-  font-size: 1.25em;
-  font-weight: bold;
-
-  font-family: "Quicksand", sans-serif;
-}
-
-.TextArea {
-  display: block;
-  margin: auto;
+  margin: 0.5em auto;
   padding: 1em;
-  border: 1em;
+  width: 50vw;
+  height: 50vh;
+  font-size: 1.5em;
+  border-radius: 2.5%;
+  outline: none;
+  resize: none;
 }
+
+.Submit-button {
+  margin: auto;
+  padding: 10px 20px 11px !important;
+  font-size: 21px !important;
+  background-color: #F36C8C;
+  font-weight: bold;
+  text-shadow: 1px 1px #F36C8C;
+  color: #ffffff;
+  border-radius: 100px;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border: 1px solid #F36C8C;
+  cursor: pointer;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  }
