@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './GenerateLexicon.css';
 import FlashCard from './FlashCard';
 const axios = require('axios');
 
@@ -60,7 +59,8 @@ class GenerateLexicon extends Component {
   render() {
     if (this.state.loading === false) {
       const lex = this.state.lexicon.alphabetizedSubmittedLexicon;
-      const listLex = lex.map((d) => <li key={d.word} className='List-lex'>{d.word}: {d.definition}</li>);
+      const listLex = lex.map((d) => <ul><FlashCard word={d.word} definition={d.definition}/></ul>
+      );
 
       return (
         <ul>

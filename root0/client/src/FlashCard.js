@@ -9,4 +9,12 @@ class FlashCard extends Component {
       
     };
   }
+
+  render() {
+    return(
+      <li key={this.props.word} className="List-lex">{this.props.word}: {this.props.definition}</li>
+    )
+  }
 }
+
+export default FlashCard;
