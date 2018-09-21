@@ -6,14 +6,26 @@ class FlashCard extends Component {
     super(props);
 
     this.state = {
-      
+      word: this.props.word,
+      definition: this.props.definition,
+      cardFront: true
     };
   }
 
+  onClick = () => {
+    this.setState({ cardFront: !(this.state.cardFront) })
+  }
+
   render() {
-    return(
-      <li key={this.props.word} className="List-lex">{this.props.word}: {this.props.definition}</li>
-    )
+    if (this.state.cardFront) {
+      return( 
+        <li key={this.state.word} className="List-lex" onClick={this.onClick}>{this.state.word}</li>
+      )
+    } else {
+      return( 
+        <li key={this.state.word} className="List-lex" onClick={this.onClick}>{this.state.definition}</li>
+      )
+    }
   }
 }
 
