@@ -59,7 +59,7 @@ class GenerateLexicon extends Component {
   render() {
     if (this.state.loading === false) {
       const lex = this.state.lexicon.alphabetizedSubmittedLexicon;
-      const listLex = lex.map((d) => <ul><FlashCard word={d.word} definition={d.definition}/></ul>
+      const listLex = lex.map((d) => <FlashCard key={d.word} word={d.word} definition={d.definition}/>
       );
 
       return (
