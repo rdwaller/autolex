@@ -5,23 +5,24 @@ import EnterText from './EnterText.js';
 
 const AppHeader = styled.section`
   display: block;
-  margin: 1em;
-  text-align: left;
+  margin: 2.5vmin;
   height: 20vh;
-  padding: 10vh;
+  width: 100vw;
   color: rgb(240, 240, 240);
 `;
 
 const AppTitle = styled.h1`
-  font-family: "Quicksand", sans-serif;
-  font-size: 5em;
-  margin: 0;
+  display: block;
+  text-align: left;
+  font-family: sans-serif;
+  font-size: 12.5vmin;
+  margin: 0.5em auto 0;
 `;
 
 const AppDescription = styled.h3`
-  font-family: "Quicksand", sans-serif;
-  font-size: 3em;
-  margin: 0 0.2em;
+  font-family: sans-serif;
+  font-size: 5.33vmin;
+  margin: 0
 `;
 
 
@@ -38,9 +39,7 @@ class App extends Component {
             Lexicon Generator
           </AppDescription>
         </AppHeader>          
-        <div>
-          <EnterText />
-        </div>
+        <EnterText />
       </div>
       
     );

@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 
-const Card = styled.li `
+const Card = styled.p `
   display: block;
-  margin: 5em auto;
-  border-radius: 2.5%;
+  margin: 2.5vmin auto;
+  border-radius: 3%;
+  padding: 5vmin;
   background-color: orange;
-  height: 300px;
-  width: 300px;
-`
+  width: 80vw;
+  height: 20vh;
+  font-size: 5vmin;
+  overflow: scroll;
+  `
 
 class FlashCard extends Component {
   constructor(props) {
@@ -32,6 +35,7 @@ class FlashCard extends Component {
     } else {
       return( 
         <Card onClick={this.onClick}>{this.props.definition}</Card>
+
       )
     }
   }

@@ -63,9 +63,9 @@ class GenerateLexicon extends Component {
       );
 
       return (
-        <ul>
+        <div>
            {listLex}
-        </ul>
+        </div>
       );
     } else {
       return (

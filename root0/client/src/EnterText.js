@@ -4,20 +4,19 @@ import GenerateLexicon from './GenerateLexicon';
 
 const TextArea = styled.textarea`
   display: block;
-  margin: 0.5em auto;
-  padding: 1em;
-  width: 50vw;
-  height: 50vh;
-  font-size: 1.5em;
-  border-radius: 2.5%;
-  outline: none;
-  resize: none;
+  margin: 2.5vmin auto 2.5vmin;
+  border-radius: 3%;
+  padding: 5vmin;
+  width: 80vw;
+  height: 30vh;
+  font-size: 5vmin;
 `;
 
 const Input = styled.input`
-  margin: auto;
-  padding: 10px 20px 11px !important;
-  font-size: 21px !important;
+  display: block;
+  margin: 0.5em auto;
+  padding: 2vmin 3vmin;
+  font-size: 5vmin;
   background-color: #F36C8C;
   font-weight: bold;
   text-shadow: 1px 1px #F36C8C;
@@ -30,6 +29,11 @@ const Input = styled.input`
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
   -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
   -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+
+  &:active {
+    background-color: green;
+    color: red;
+  }
 `;
 
 
@@ -67,7 +71,6 @@ class EnterText extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <label></label>
           <TextArea placeholder="Enter a text here." value={this.state.typedValue} onChange={this.handleChange} />          
           <Input type="submit" value="Generate Lexicon" />
         </form>
