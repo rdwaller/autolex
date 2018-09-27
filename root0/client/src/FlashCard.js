@@ -31,7 +31,7 @@ class FlashCard extends Component {
       )
     } else {
       return( 
-        <li className="List-lex" onClick={this.onClick}>{this.props.definition}</li>
+        <Card onClick={this.onClick}>{this.props.definition}</Card>
       )
     }
   }
