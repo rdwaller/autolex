@@ -1,5 +1,15 @@
 import React, { Component } from 'react';
-import './FlashCard.css';
+import styled from 'styled-components';
+
+
+const Card = styled.li `
+  display: block;
+  margin: 5em auto;
+  border-radius: 2.5%;
+  background-color: orange;
+  height: 300px;
+  width: 300px;
+`
 
 class FlashCard extends Component {
   constructor(props) {
@@ -17,7 +27,7 @@ class FlashCard extends Component {
   render() {
     if (this.state.cardFront) {
       return( 
-        <li className="List-lex" onClick={this.onClick}>{this.props.word}</li>
+        <Card onClick={this.onClick}>{this.props.word}</Card>
       )
     } else {
       return( 

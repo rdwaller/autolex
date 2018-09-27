@@ -1,21 +1,48 @@
 import React, { Component } from 'react';
-import './App.css';
+import styled from 'styled-components';
 import EnterText from './EnterText.js';
+
+
+const AppHeader = styled.section`
+  display: block;
+  margin: 1em;
+  text-align: left;
+  height: 20vh;
+  padding: 10vh;
+  color: rgb(240, 240, 240);
+`;
+
+const AppTitle = styled.h1`
+  font-family: "Quicksand", sans-serif;
+  font-size: 5em;
+  margin: 0;
+`;
+
+const AppDescription = styled.h3`
+  font-family: "Quicksand", sans-serif;
+  font-size: 3em;
+  margin: 0 0.2em;
+`;
 
 
 class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">AutoLex</h1>
-          <h3 className="App-description">Lexicon Generator</h3>
-        </header>
-        <div className="EnterText">
+      <div>
+        <AppHeader>
+          <AppTitle>
+            AutoLex
+          </AppTitle>
+          <AppDescription>
+            Lexicon Generator
+          </AppDescription>
+        </AppHeader>          
+        <div>
           <EnterText />
         </div>
       </div>
+      
     );
   }
 }
