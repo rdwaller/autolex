@@ -3,20 +3,21 @@ import styled from 'styled-components';
 
 
 const Card = styled.span `
-  display: block;
-  margin: 2.5vmin auto;
+  display: inline-block;
+  margin: 5px;
   border-radius: 1%;
   padding: 5vmin;
-  background: rgb(255, 240, 215);
-  width: 15.55em;
-  height: 11em;
-  font-size: 1.25rem;
+  background: rgb(204, 204, 204);
+  width: 14.140em;
+  height: 10em;
+  font-size: 1.15em;
+  font-family: Quicksand-regular, courier, sans-serif;
   overflow: auto;
 
   @media (max-width: 500px) {
-    background: rgb(255, 240, 215);
-    width: 11.31em;
-    height: 8em;
+    width: 9.898em;
+    height: 7em;
+    font-size: 1.10em;
   }
   `;
 

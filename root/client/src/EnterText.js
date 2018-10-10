@@ -11,7 +11,8 @@ const TextArea = styled.textarea`
   width: 80%;
   height: 100px;
   background: rgb(204, 204, 204);
-  font-size: 1.5em;
+  font-size: 1.2em;
+  font-family: Quicksand-regular, courier, sans-serif;
 
   @media (max-width: 500px) {
     width: 80%;
@@ -22,20 +23,20 @@ const TextArea = styled.textarea`
 const GeneratorButton = styled.input`
   display: block;
   margin: 10px auto;
-  padding: 2vmin 3vmin;
-  font-size: 1.5em;
-  background: rgb(110, 110, 110);
-  font-weight: bold;
+  padding: 8px;
+  font-size: 1.2em;
+  font-family: Quicksand-regular, courier, sans-serif;
+  background: rgb(115, 115, 115);
   text-shadow: 1px 1px rgb(100, 100, 100);
-  color: rgb(204, 204, 204);
+  color: #e6e6e6;
   border-radius: 30px;
   border: 1px solid rgb(100, 100, 100);
   cursor: pointer;
   box-shadow: 0 1px 0 rgba(220, 220, 220, 0.5) inset;
 
   &:active {
-    background-color: green;
-    color: red;
+    background: rgb(210, 210, 210);
+    color: rgb(115, 115, 115);
   }
 `;
 

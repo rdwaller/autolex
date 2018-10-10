@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 import FlashCard from './FlashCard';
+import styled from 'styled-components';
 const axios = require('axios');
+
+
+const ContainCards = styled.div `
+  margin: auto;
+  text-align: center;
+
+  @media (max-width: 500px) {
+    text-align: center
+  }
+`;
+
 
 class GenerateLexicon extends Component {
   constructor(props) {
@@ -63,9 +75,9 @@ class GenerateLexicon extends Component {
       );
 
       return (
-        <div>
+        <ContainCards>
            {listLex}
-        </div>
+        </ContainCards>
       );
     } else {
       return (
