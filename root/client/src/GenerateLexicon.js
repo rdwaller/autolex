@@ -13,7 +13,6 @@ const ContainCards = styled.div `
   }
 `;
 
-
 class GenerateLexicon extends Component {
   constructor(props) {
     super(props);
@@ -35,16 +34,17 @@ class GenerateLexicon extends Component {
     const submittedLexicon = [];
     filteredText.forEach(word => {
       axios.get(`http://localhost:5000/oxford_api/${word}`)
-      .then(wordData => {
+      .then(definitionData => {
+        console.log(definitionData);
+
         let obj = {};
-        let definition = wordData['data']['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]['definitions']
+        let definition = definitionData['data']['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]['definitions'];
         obj['word'] = word;
         obj['definition'] = definition;
         submittedLexicon.push(obj);
         function compare(a,b) {
           const wordA = a.word.toUpperCase();
           const wordB = b.word.toUpperCase();
-          
           let comparison = 0;
           if (wordA > wordB) {
             comparison = 1;
@@ -53,13 +53,14 @@ class GenerateLexicon extends Component {
           }
           return comparison
         }
+
         const alphabetizedSubmittedLexicon = submittedLexicon.sort(compare);
-        
 
         this.setState({ 
           lexicon: { alphabetizedSubmittedLexicon },
           loading: false
         });
+        
       });
     });   
   }

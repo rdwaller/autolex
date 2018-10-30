@@ -41,15 +41,35 @@ router.get('/textSubmissions', function(req, res) {
 
 
 router.get('/oxford_api/:word', (req, res, next) => {
+
   const word = req.params.word;
+  
+  //FIND ROOT   
+  
+  // wordData['data']['results'][0][lexicalEntries][0][inflectionOf][0][text];
+
+  const getRoot = dict.inflections(word);
+  getRoot.then(inflectionData => {
+    const rootWord = inflectionData['results'][0]['lexicalEntries'][0]['inflectionOf'][0]['text'];
+    console.log(rootWord)
+    const lookupRoot = dict.definitions(rootWord);
+    lookupRoot.then(definitionData => {
+      res.json(definitionData);
+    })
+  });
+  
+  //INFLECTIONS UNSPECIFIED
+  /*
   const lookup = dict.find(word);
-  lookup.then(result => {
-    console.log(result);
-    res.json(result);
+  lookup.then(wordData => {
+    console.log(wordData);
+    res.json(wordData);
   }, err => {
     console.log(err);
     res.sendStatus(500);
   });
+  */
+
 });
 
 module.exports = router;
