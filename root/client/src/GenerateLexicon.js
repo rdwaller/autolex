@@ -24,7 +24,7 @@ class GenerateLexicon extends Component {
   }
 
   componentDidMount() {
-    const textEntry = this.props.textEntry;
+    const textEntry = this.props.textEntry.toLowerCase();
     const strippedText = textEntry.replace(/[^\w\s]/gi,'').replace(/\r?\n|\r/gi,' ');
     const splitText = strippedText.split(' ');
     function discardDuplicates(value, index, self) {
@@ -32,11 +32,13 @@ class GenerateLexicon extends Component {
     }
     const filteredText = splitText.filter( discardDuplicates ); 
     const submittedLexicon = [];
+    console.log(textEntry);
+    console.log(strippedText);
+    console.log(splitText);
+    console.log(filteredText);
     filteredText.forEach(word => {
       axios.get(`http://localhost:5000/oxford_api/${word}`)
       .then(definitionData => {
-        console.log(definitionData);
-
         let obj = {};
         let definition = definitionData['data']['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]['definitions'];
         obj['word'] = word;
