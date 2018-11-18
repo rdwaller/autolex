@@ -6,11 +6,20 @@ const axios = require('axios');
 
 const ContainCards = styled.div `
   margin: auto;
+  display: block;
   text-align: center;
 
   @media (max-width: 500px) {
     text-align: center
   }
+`;
+
+const LoadError = styled.p `
+  margin: 25px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: red;
 `;
 
 class GenerateLexicon extends Component {
@@ -32,16 +41,14 @@ class GenerateLexicon extends Component {
     }
     const filteredText = splitText.filter( discardDuplicates ); 
     const submittedLexicon = [];
-    console.log(textEntry);
-    console.log(strippedText);
-    console.log(splitText);
-    console.log(filteredText);
     filteredText.forEach(word => {
       axios.get(`http://localhost:5000/oxford_api/${word}`)
       .then(definitionData => {
         let obj = {};
+        let rootWord = definitionData['data']['results'][0]['lexicalEntries'][0]['text'];
         let definition = definitionData['data']['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]['definitions'];
         obj['word'] = word;
+        obj['rootWord'] = rootWord;
         obj['definition'] = definition;
         submittedLexicon.push(obj);
         function compare(a,b) {
@@ -74,17 +81,19 @@ class GenerateLexicon extends Component {
   render() {
     if (this.state.loading === false) {
       const lex = this.state.lexicon.alphabetizedSubmittedLexicon;
-      const listLex = lex.map((d) => <FlashCard key={d.word} word={d.word} definition={d.definition}/>
+      const listLex = lex.map((d) => <FlashCard key={d.word} word={d.word} rootWord={d.rootWord} definition={d.definition}/>
       );
 
       return (
-        <ContainCards>
-           {listLex}
-        </ContainCards>
+        <div>
+          <ContainCards>
+            {listLex}
+          </ContainCards>
+        </div>
       );
     } else {
       return (
-        <p>Loading. If this message stays for more than a few seconds, there is a problem.</p>
+        <LoadError>LOADING... If more than ten seconds elapses, something is probably wrong.</LoadError>
       )
     }
   }
