@@ -136,4 +136,21 @@
     const TextInput = mongoose.model('TextInput', textSchema);
 
     module.exports = TextInput;
+	
+// root/routes/routes.js //
+  //=== from top of file ===//
+    //const mongoose = require('mongoose');
+    //const TextInput = require('../models/textModel.js');
+
+  /* router.post('/textSubmissions', function(req, res) {
+
+    TextInput.create({
+      submittedText: req.body.textSubmission
+    }).then(console.log('POST request received'));
+    
+  });
+
+  router.get('/textSubmissions', function(req, res) {
+    console.log('GET request received');
+  }); */
 //=========================//
