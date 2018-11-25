@@ -33,7 +33,7 @@ class GenerateLexicon extends Component {
   }
 
   componentDidMount() {
-    const textEntry = this.props.textEntry.toLowerCase();
+    const textEntry = this.props.removeCommonWords ? this.props.textEntry.toLowerCase().replace(/\ba\b|\ban\b|\bthe\b|\bfor\b|\band\b|\bnor\b|\bbut\b|\bor\b|\byet\b|\b\bso\b|\bi\b|\bme\b|\bwe\b|\bus\b|\byou\b|\bhe\b|\bhim\b|\bshe\b|\bher\b|\bit\b|\bthey\b|\bthem\b|\bthey\b|\bthem\b/g, '') : this.props.textEntry.toLowerCase();
     const strippedText = textEntry.replace(/[^\w\s]/gi,'').replace(/\r?\n|\r/gi,' ');
     const splitText = strippedText.split(' ');
     function discardDuplicates(value, index, self) {

@@ -41,7 +41,7 @@ class FlashCard extends Component {
     } else {
       return( 
         <Card onClick={this.onClick}>
-          <p><strong>Word retrieved:</strong> {this.props.rootWord}</p>
+          <span><strong>Word retrieved:</strong> {this.props.rootWord}</span>
           <p><strong>A definition:</strong> {this.props.definition}</p>
         </Card>
 

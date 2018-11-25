@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import GenerateLexicon from './GenerateLexicon';
 
+const Text = styled.span`
+  color: white;
+`;
+
 const TextArea = styled.textarea`
   display: block;
   border-radius: 20px;
@@ -19,6 +23,15 @@ const TextArea = styled.textarea`
     height: 100px;
   }
 `;
+
+const CheckboxField = styled.div`
+  display: block;
+  padding: 15px;
+  position: static;
+  text-align: center;
+  font-size: 1.1em;
+  font-family: Quicksand-regular, courier, sans-serif;
+`
 
 const GeneratorButton = styled.input`
   display: block;
@@ -46,11 +59,13 @@ class EnterText extends Component {
     this.state = {
       typedValue: '',
       submittedValue: '',
+      removeCommonWords: false, 
       processSubmission: false
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCheckbox = this.handleCheckbox.bind(this);
   }
 
   endProcessSubmission = () => {
@@ -60,8 +75,15 @@ class EnterText extends Component {
   handleChange(event) {
     this.setState({
       typedValue: event.target.value,
-      processSubmission: false
+      processSubmission: false,
     });
+  }
+
+  handleCheckbox(event) {
+    this.setState({
+      removeCommonWords: event.target.checked,
+      processSubmission: false,
+    })
   }
 
   handleSubmit(event) {
@@ -74,10 +96,20 @@ class EnterText extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <TextArea placeholder="Enter a text here." value={this.state.typedValue} onChange={this.handleChange} />          
+          <TextArea placeholder="Enter a text here." value={this.state.typedValue} onChange={this.handleChange} />
+          <CheckboxField>
+            <input 
+            name="wordFilter" 
+            type="checkbox" 
+            checked={this.state.removeCommonWords}
+            onChange={this.handleCheckbox} />
+            <label>
+              <Text> Remove common words?</Text>
+            </label>
+          </CheckboxField>
           <GeneratorButton type="submit" value="Generate Lexicon" />
         </form>
-        {this.state.processSubmission && <GenerateLexicon textEntry={this.state.submittedValue} endProcessSubmission={this.endProcessSubmission} />}
+        {this.state.processSubmission && <GenerateLexicon textEntry={this.state.submittedValue} removeCommonWords={this.state.removeCommonWords} endProcessSubmission={this.endProcessSubmission} />}
       </div>
     );
   }
