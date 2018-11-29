@@ -1,18 +1,18 @@
 const express = require('express');
-const app = express();
 const router = express.Router();
+const config = require('../config.js');
 
 //=== CONFIGURE OXFORD DICTIONARY AUTHENTICATION ===//
 
   const Dictionary = require("oxford-dictionary");
   
-  const config = {
-    app_id : "101f8bca",
-    app_key : "03895f27fbe4428f3906e604a23e82f3",
-    source_lang : "en"
+  const configuration = {
+    app_id : config.app_id,
+    app_key : config.app_key,
+    source_lang : config.source_lang,
   };
   
-  const dict = new Dictionary(config);
+  const dict = new Dictionary(configuration);
 
 //=== END CONFIGURE OXFORD DICTIONARY AUTHENTICATION ===//
 
