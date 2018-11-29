@@ -4,6 +4,8 @@ import GenerateLexicon from './GenerateLexicon';
 
 const Text = styled.span`
   color: white;
+  font-family: Quicksand-regular, courier, sans-serif;
+  font-size: 1em;
 `;
 
 const TextArea = styled.textarea`
@@ -59,7 +61,7 @@ class EnterText extends Component {
     this.state = {
       typedValue: '',
       submittedValue: '',
-      removeCommonWords: false, 
+      omitCommonWords: false,
       processSubmission: false
     }
 
@@ -81,7 +83,7 @@ class EnterText extends Component {
 
   handleCheckbox(event) {
     this.setState({
-      removeCommonWords: event.target.checked,
+      omitCommonWords: event.target.checked,
       processSubmission: false,
     })
   }
@@ -98,18 +100,21 @@ class EnterText extends Component {
         <form onSubmit={this.handleSubmit}>
           <TextArea placeholder="Enter a text here." value={this.state.typedValue} onChange={this.handleChange} />
           <CheckboxField>
-            <input 
-            name="wordFilter" 
-            type="checkbox" 
-            checked={this.state.removeCommonWords}
+            <input
+            name="wordFilter"
+            type="checkbox"
+            checked={this.state.omitCommonWords}
             onChange={this.handleCheckbox} />
             <label>
-              <Text> Remove common words?</Text>
+              <Text> Omit common words?</Text>
             </label>
           </CheckboxField>
           <GeneratorButton type="submit" value="Generate Lexicon" />
+          <div style={{textAlign: "center"}}>
+            <Text><strong>Notice: This is a demo version. Output is limited to ten cards.</strong></Text>
+          </div>
         </form>
-        {this.state.processSubmission && <GenerateLexicon textEntry={this.state.submittedValue} removeCommonWords={this.state.removeCommonWords} endProcessSubmission={this.endProcessSubmission} />}
+        {this.state.processSubmission && <GenerateLexicon textEntry={this.state.submittedValue} omitCommonWords={this.state.omitCommonWords} endProcessSubmission={this.endProcessSubmission} />}
       </div>
     );
   }

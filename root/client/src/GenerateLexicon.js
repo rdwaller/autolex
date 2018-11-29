@@ -33,15 +33,18 @@ class GenerateLexicon extends Component {
   }
 
   componentDidMount() {
-    const textEntry = this.props.removeCommonWords ? this.props.textEntry.toLowerCase().replace(/\ba\b|\ban\b|\bthe\b|\bfor\b|\band\b|\bnor\b|\bbut\b|\bor\b|\byet\b|\b\bso\b|\bi\b|\bme\b|\bwe\b|\bus\b|\byou\b|\bhe\b|\bhim\b|\bshe\b|\bher\b|\bit\b|\bthey\b|\bthem\b|\bthey\b|\bthem\b/g, '') : this.props.textEntry.toLowerCase();
+    const commonWords = /\ba\b|\ban\b|\bthe\b|\bfor\b|\band\b|\bnor\b|\bbut\b|\bor\b|\byet\b|\b\bso\b|\bi\b|\bme\b|\bwe\b|\bus\b|\byou\b|\bhe\b|\bhim\b|\bshe\b|\bher\b|\bit\b|\bthey\b|\bthem\b|\bthey\b|\bthem\b|\bam\b|\bare\b|\bis\b|/g;
+    const textEntry = this.props.omitCommonWords ? this.props.textEntry.toLowerCase().replace(commonWords, '') : this.props.textEntry.toLowerCase();
     const strippedText = textEntry.replace(/[^\w\s]/gi,'').replace(/\r?\n|\r/gi,' ');
     const splitText = strippedText.split(' ');
     function discardDuplicates(value, index, self) {
       return self.indexOf(value) === index;
     }
-    const filteredText = splitText.filter( discardDuplicates ); 
+    const filteredText = splitText.filter( discardDuplicates );
+    //The line below limits the text to ten words for the live demo app.
+    const limitedWords = filteredText.slice(0,10);
     const submittedLexicon = [];
-    filteredText.forEach(word => {
+    limitedWords.forEach(word => {
       axios.get(`http://localhost:5000/oxford_api/${word}`)
       .then(definitionData => {
         let obj = {};
@@ -62,18 +65,15 @@ class GenerateLexicon extends Component {
           }
           return comparison
         }
-
         const alphabetizedSubmittedLexicon = submittedLexicon.sort(compare);
-
-        this.setState({ 
+        this.setState({
           lexicon: { alphabetizedSubmittedLexicon },
           loading: false
-        });
-        
+        })
       });
-    });   
+    });
   }
-  
+
   componentDidUpdate() {
     //this.props.endProcessSubmission();
   }

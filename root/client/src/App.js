@@ -58,12 +58,12 @@ class App extends Component {
           <AppDescription>
             Lexicon Generator
           </AppDescription>
-        </AppHeader> 
-        <Content>       
+        </AppHeader>
+        <Content>
           <EnterText />
-        </Content>  
+        </Content>
       </div>
-      
+
     );
   }
 }
