@@ -4,13 +4,13 @@ const config = require('../config.js');
 
 //=== CONFIGURE OXFORD DICTIONARY AUTHENTICATION ===//
 
-  const Dictionary = require("oxford-dictionary");
-  
-  const configuration = {
-    app_id : config.app_id,
-    app_key : config.app_key,
-    source_lang : config.source_lang,
-  };
+const Dictionary = require("oxford-dictionary");
+
+const configuration = {
+  app_id : config.app_id,
+  app_key : config.app_key,
+  source_lang : config.source_lang,
+};
   
   const dict = new Dictionary(configuration);
 
