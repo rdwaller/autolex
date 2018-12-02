@@ -33,7 +33,7 @@ class GenerateLexicon extends Component {
   }
 
   componentDidMount() {
-    const commonWords = /\ba\b|\ban\b|\bthe\b|\bfor\b|\band\b|\bnor\b|\bbut\b|\bor\b|\byet\b|\b\bso\b|\bi\b|\bme\b|\bwe\b|\bus\b|\byou\b|\bhe\b|\bhim\b|\bshe\b|\bher\b|\bit\b|\bthey\b|\bthem\b|\bthey\b|\bthem\b|\bam\b|\bare\b|\bis\b|/g;
+    const commonWords = /\ba\b|\ban\b|\bthe\b|\bfor\b|\band\b|\bnor\b|\bbut\b|\bor\b|\byet\b|\b\bso\b|\bi\b|\bme\b|\bwe\b|\bus\b|\byou\b|\bhe\b|\bhim\b|\bshe\b|\bher\b|\bit\b|\bthey\b|\bthem\b|\bthey\b|\bthem\b|\bam\b|\bare\b|\bis\b|\bat\b|\bby\b|\bfor\b|\bfrom\b|\bin\b|\binto\b|\bof\b|\bon\b|\bto\b|\bwith\b|/g;
     const textEntry = this.props.omitCommonWords ? this.props.textEntry.toLowerCase().replace(commonWords, '') : this.props.textEntry.toLowerCase();
     const strippedText = textEntry.replace(/[^\w\s]/gi,'').replace(/\r?\n|\r/gi,' ');
     const splitText = strippedText.split(' ');

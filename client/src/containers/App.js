@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 //import { createGlobalStyle } from 'styled-components';
-import './App.css';
-import EnterText from './EnterText.js';
+import './style/App.css';
+import EnterText from '../components/EnterText.js';
 
 /* const GlobalStyle = createGlobalStyle`
   @font-face {

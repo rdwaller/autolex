@@ -2,8 +2,13 @@
   "name": "autolex",
   "version": "0.1.0",
   "babel": {
-    "presets": ["env", "react"],
-    "plugins": ["styled-components"]
+    "presets": [
+      "env",
+      "react"
+    ],
+    "plugins": [
+      "styled-components"
+    ]
   },
   "private": true,
   "dependencies": {
