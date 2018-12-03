@@ -6,6 +6,7 @@ const axios = require('axios');
 
 const ContainCards = styled.div `
   margin: auto;
+  padding: 25px;
   display: block;
   text-align: center;
 
@@ -14,7 +15,7 @@ const ContainCards = styled.div `
   }
 `;
 
-const LoadError = styled.p `
+const LoadError = styled.div `
   margin: 25px;
   font-size: 24px;
   font-weight: bold;
@@ -33,7 +34,7 @@ class GenerateLexicon extends Component {
   }
 
   componentDidMount() {
-    const commonWords = /\ba\b|\ban\b|\bthe\b|\bfor\b|\band\b|\bnor\b|\bbut\b|\bor\b|\byet\b|\b\bso\b|\bi\b|\bme\b|\bwe\b|\bus\b|\byou\b|\bhe\b|\bhim\b|\bshe\b|\bher\b|\bit\b|\bthey\b|\bthem\b|\bthey\b|\bthem\b|\bam\b|\bare\b|\bis\b|\bat\b|\bby\b|\bfor\b|\bfrom\b|\bin\b|\binto\b|\bof\b|\bon\b|\bto\b|\bwith\b|/g;
+    const commonWords = /\ba\b|\ban\b|\bthe\b|\bfor\b|\band\b|\bnor\b|\bbut\b|\bor\b|\byet\b|\b\bso\b|\bi\b|\bme\b|\bwe\b|\bus\b|\byou\b|\bhe\b|\bhim\b|\bshe\b|\bher\b|\bit\b|\bthey\b|\bthem\b|\bthey\b|\bthem\b|\bmy\b|\bmine\b|\byour\b|\byours\b|\bhis\b|\bhers\b|\btheir\b|\btheirs\b|\bour\b|\bours\b|\bam\b|\bare\b|\bis\b|\bat\b|\bby\b|\bfor\b|\bfrom\b|\bin\b|\binto\b|\bof\b|\bon\b|\bto\b|\bwith\b|/g;
     const textEntry = this.props.omitCommonWords ? this.props.textEntry.toLowerCase().replace(commonWords, '') : this.props.textEntry.toLowerCase();
     const strippedText = textEntry.replace(/[^\w\s]/gi,'').replace(/\r?\n|\r/gi,' ');
     const splitText = strippedText.split(' ');
@@ -93,7 +94,7 @@ class GenerateLexicon extends Component {
       );
     } else {
       return (
-        <LoadError>LOADING... If more than ten seconds elapses, something is probably wrong.</LoadError>
+        <LoadError><img src={require('../images/ajax-loader.gif')} alt="Loading..." /></LoadError>
       )
     }
   }

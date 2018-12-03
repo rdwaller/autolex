@@ -16,20 +16,21 @@ router.get('/oxford_api/:word', (req, res, next) => {
   const word = req.params.word;
   const getRoot = new Promise((resolve, reject) => {
     resolve(dict.inflections(word));
+  })
+  .catch(e => {
+    console.log(e);
   });
   getRoot.then(inflectionData => {
     const rootWord = inflectionData['results'][0]['lexicalEntries'][0]['inflectionOf'][0]['text'];
     const lookupRoot = dict.definitions(rootWord);
     return lookupRoot;
-    throw "Could not look up root word";
   }).catch(e => {
     console.log(e);
   }).then(definitionData => {
     return res.json(definitionData);
-    throw "Could not look up definition data";
   }).catch(e => {
     console.log(e);
-  })
+  });
 });
 
 module.exports = router;
