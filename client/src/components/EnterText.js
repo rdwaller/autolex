@@ -15,7 +15,7 @@ const TextArea = styled.textarea`
   position: static;
   margin: auto;
   width: 80%;
-  height: 100px;
+  height: 125px;
   background: rgb(204, 204, 204);
   font-size: 1.2em;
   font-family: Quicksand-regular, courier, sans-serif;
@@ -39,10 +39,10 @@ const GeneratorButton = styled.input`
   display: block;
   margin: 10px auto;
   padding: 8px;
+  background: rgb(115, 115, 115);
+  text-align: center;
   font-size: 1.2em;
   font-family: Quicksand-regular, courier, sans-serif;
-  background: rgb(115, 115, 115);
-  text-shadow: 1px 1px rgb(100, 100, 100);
   color: #e6e6e6;
   border-radius: 30px;
   border: 1px solid rgb(100, 100, 100);
@@ -70,10 +70,6 @@ class EnterText extends Component {
     this.handleCheckbox = this.handleCheckbox.bind(this);
   }
 
-  endProcessSubmission = () => {
-    this.setState({ processSubmission: false});
-  }
-
   handleChange(event) {
     this.setState({
       typedValue: event.target.value,
@@ -84,7 +80,6 @@ class EnterText extends Component {
   handleCheckbox(event) {
     this.setState({
       omitCommonWords: event.target.checked,
-      processSubmission: false,
     })
   }
 
@@ -98,13 +93,10 @@ class EnterText extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <TextArea placeholder="Enter a text here." value={this.state.typedValue} onChange={this.handleChange} />
+          <TextArea placeholder="Enter a text here." onChange={this.handleChange} value={this.state.typedValue} />
           <CheckboxField>
             <input
-            name="wordFilter"
-            type="checkbox"
-            checked={this.state.omitCommonWords}
-            onChange={this.handleCheckbox} />
+            name="wordFilter" type="checkbox" onChange={this.handleCheckbox} checked={this.state.omitCommonWords} />
             <label>
               <Text> Omit common words?</Text>
             </label>
@@ -114,7 +106,7 @@ class EnterText extends Component {
             <Text><strong>Notice: This is a demo version. Output is limited to ten cards.</strong></Text>
           </div>
         </form>
-        {this.state.processSubmission && <GenerateLexicon textEntry={this.state.submittedValue} omitCommonWords={this.state.omitCommonWords} endProcessSubmission={this.endProcessSubmission} />}
+        {this.state.processSubmission && <GenerateLexicon textEntry={this.state.submittedValue} omitCommonWords={this.state.omitCommonWords} />}
       </div>
     );
   }

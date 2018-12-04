@@ -4,13 +4,6 @@ import styled from 'styled-components';
 import './style/App.css';
 import EnterText from '../components/EnterText.js';
 
-/* const GlobalStyle = createGlobalStyle`
-  @font-face {
-    font-family: 'Quicksand-Regular';
-    src: url(./fonts/Quicksand-Regular.otf);
-  }
-` */
-
 const AppHeader = styled.header`
   margin: 0;
   height: 125px;
@@ -23,7 +16,6 @@ const AppTitle = styled.h1`
   font-size: 50px;
   color: #e6e6e6;
   margin: 30px 0px 0px 0px;
-  padding: 100px;
   padding: 0.5em 0 0;
 
   @media (max-width: 1000px) {
