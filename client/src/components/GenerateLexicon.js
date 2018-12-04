@@ -43,7 +43,7 @@ class GenerateLexicon extends Component {
     }
     const filteredText = splitText.filter( discardDuplicates );
     //The line below limits the text to ten words for the live demo app.
-    const limitedWords = filteredText.slice(0,10);
+    const limitedWords = filteredText.slice(0,11);
     const submittedLexicon = [];
     limitedWords.forEach(word => {
       axios.get(`http://localhost:5000/oxford_api/${word}`)

@@ -21,4 +21,4 @@ yarn-debug.log*
 yarn-error.log*
 
 /refuse
-/server/config.js
+config.js
